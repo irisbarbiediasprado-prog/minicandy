@@ -1,3 +1,5 @@
+from cli.core.console import title, step, success, blank
+
 from pathlib import Path
 
 NAME = "clean"
@@ -11,7 +13,7 @@ FILES = [
 
 def run(args):
     print("🧹 MiniCandy Clean")
-    print()
+    blank()
 
     removed = 0
 
@@ -24,5 +26,5 @@ def run(args):
     if removed == 0:
         print("Nada para limpar.")
     else:
-        print()
+        blank()
         print(f"✅ {removed} arquivo(s) removido(s).")

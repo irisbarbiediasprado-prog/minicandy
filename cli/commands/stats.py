@@ -1,3 +1,5 @@
+from cli.core.console import title, step, success, blank
+
 from pathlib import Path
 from cli.database.icons import load
 
@@ -10,8 +12,8 @@ def run(args):
     drawable = Path("app/src/main/res/xml/drawable.xml").exists()
     appfilter = Path("app/src/main/res/xml/appfilter.xml").exists()
 
-    print("🍬 MiniCandy")
-    print()
+    title("MiniCandy")
+    blank()
     print(f"Ícones.............. {len(icons)}")
     print(f"Drawable............ {'OK' if drawable else 'AUSENTE'}")
     print(f"AppFilter........... {'OK' if appfilter else 'AUSENTE'}")
@@ -20,5 +22,5 @@ def run(args):
     if icons:
         print(f"Último ícone........ {icons[-1]['name']}")
 
-    print()
+    blank()
     print("Projeto............. Saudável")

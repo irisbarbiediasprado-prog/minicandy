@@ -1,3 +1,5 @@
+from cli.core.console import title, step, success, blank
+
 from cli.database.icons import rebuild
 
 NAME = "scan"

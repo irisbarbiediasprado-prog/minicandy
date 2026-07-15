@@ -1,10 +1,12 @@
+from cli.core.console import title, step, success, blank
+
 from pathlib import Path
 
 NAME = "doctor"
 HELP = "Verifica o ambiente"
 
 def run(args):
-    print("🍬 MiniCandy Doctor\n")
+    title("MiniCandy Doctor\n")
 
     checks = [
         ("app", Path("app").is_dir()),
@@ -19,7 +21,7 @@ def run(args):
         print(("✔" if result else "✖"), name)
         ok &= result
 
-    print()
+    blank()
 
     if ok:
         print("Ambiente OK.")

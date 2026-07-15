@@ -1,8 +1,21 @@
 def title(text):
-    print(f"🍬 {text}\n")
+    print(f"🍬 {text}")
+    print()
 
-def section(text):
-    print(text)
+def step(text):
+    print(f"▶ {text}")
 
-def check(label, ok):
-    print(("✔" if ok else "✘"), label)
+def success(text):
+    print(f"✅ {text}")
+
+def warning(text):
+    print(f"⚠ {text}")
+
+def error(text):
+    print(f"❌ {text}")
+
+def info(text):
+    print(f"ℹ {text}")
+
+def blank():
+    print()

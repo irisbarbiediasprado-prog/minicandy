@@ -1,3 +1,5 @@
+from cli.core.console import title, step, success, blank
+
 from argparse import Namespace
 
 from cli.commands import scan
@@ -9,20 +11,20 @@ NAME = "sync"
 HELP = "Sincroniza o projeto"
 
 def run(args):
-    print("🍬 MiniCandy Sync")
-    print()
+    title("MiniCandy Sync")
+    blank()
 
-    print("▶ Scan")
+    step("Scan")
     scan.run(Namespace())
 
-    print()
-    print("▶ Generate drawable")
+    blank()
+    step("Generate drawable")
     drawable.generate()
 
-    print()
-    print("▶ Generate appfilter")
+    blank()
+    step("Generate appfilter")
     appfilter.generate()
 
-    print()
-    print("▶ Stats")
+    blank()
+    step("Stats")
     stats.run(Namespace())
