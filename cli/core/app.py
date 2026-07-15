@@ -7,6 +7,7 @@ from cli.commands import version
 from cli.commands import generate
 from cli.commands import icon
 from cli.commands import scan
+from cli.commands import stats
 
 MODULES = (
     doctor,
@@ -14,6 +15,7 @@ MODULES = (
     generate,
     icon,
     scan,
+    stats,
 )
 
 def main():
