@@ -1,7 +1,8 @@
 from pathlib import Path
+from cli.database.icons import load
 
 def generate():
-    icons = sorted(Path("assets/pixelart/originals").glob("*.png"))
+    icons = load()["icons"]
 
     xml = [
         '<?xml version="1.0" encoding="utf-8"?>',
@@ -9,7 +10,7 @@ def generate():
     ]
 
     for icon in icons:
-        xml.append(f'    <item drawable="{icon.stem}" />')
+        xml.append(f'    <item drawable="{icon["drawable"]}" />')
 
     xml.append("</resources>")
 
