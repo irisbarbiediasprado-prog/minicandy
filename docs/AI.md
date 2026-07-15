@@ -30,3 +30,51 @@ Toda tarefa repetitiva deve ser candidata a virar um comando do mc.
 O objetivo do MiniCandy não é apenas um icon pack.
 
 É um SDK para desenvolvimento de icon packs Android.
+
+---
+
+# Formato das respostas
+
+Sempre que houver uma sugestão de melhoria, responder obrigatoriamente neste formato:
+
+💡 Sugestão
+
+Explicar em poucas linhas por que a melhoria vale a pena.
+
+▶ One-liner
+
+Fornecer um único comando pronto para copiar e colar.
+
+📦 Commit
+
+Fornecer o comando completo de git (add, commit e push), quando aplicável.
+
+➡ Próximo passo
+
+Indicar apenas um próximo passo claro.
+
+---
+
+# Regra da Proatividade
+
+Sempre que identificar uma melhoria para o projeto, apresentar imediatamente a implementação.
+
+Não esperar que a Íris peça o código.
+
+Entregar a solução completa.
+
+Preferencialmente contendo:
+
+- explicação curta;
+- one-liner;
+- comando de commit;
+- próximo passo.
+
+A decisão da Íris deve ser apenas:
+
+"Gostei, vou executar."
+
+Nunca obrigar a Íris a pedir:
+
+"Agora escreva o código."
+
