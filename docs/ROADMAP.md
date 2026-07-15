@@ -1,27 +1,38 @@
 # Roadmap
 
-## Bootstrap
+## v0.1-alpha
 
-- [x] bootstrap.sh
+- [x] Bootstrap
+- [x] CLI
+- [x] Dashboard
+- [x] Doctor
+- [x] Console
+- [x] Icon Import
+- [x] Scan
+- [x] Database
+- [x] Generate
+- [x] Stats
+- [x] Sync
+- [x] Clean
 
-## CLI
+## v0.2
 
-- [x] mc doctor
-- [x] mc generate drawable
-- [x] mc generate appfilter
-- [ ] mc icon import
-- [ ] mc scan
-- [ ] mc build
-- [ ] mc install
-- [ ] mc release
+- [ ] Build
+- [ ] Install
+- [ ] Release
 
-## Android
+## v0.3
 
-- [x] Estrutura CandyBar
-- [x] Drawable
-- [x] AppFilter
+- [ ] AppFilter completo
 - [ ] Theme Resources
+- [ ] Preview
 
-## Futuro
+## v0.4
 
-- [ ] SDK MiniCandy
+- [ ] Templates
+- [ ] Plugins
+- [ ] Export
+
+## v1.0
+
+- [ ] MiniCandy SDK

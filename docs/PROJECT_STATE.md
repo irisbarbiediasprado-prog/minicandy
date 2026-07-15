@@ -1,26 +1,27 @@
 # Estado do Projeto
 
-## Milestone atual
+## Versão
 
-CLI Python funcional
+v0.1-alpha
 
-## Funcionalidades implementadas
+## Milestones concluídas
 
-- ✅ bootstrap.sh
-- ✅ Ambiente reproduzível no Termux
-- ✅ Git via SSH
-- ✅ mc doctor
-- ✅ mc generate drawable
-- ✅ mc generate appfilter
+- ✅ Bootstrap
+- ✅ CLI em Python
+- ✅ Dashboard
+- ✅ Doctor v2
+- ✅ Console API
+- ✅ Icon Import
+- ✅ Scan
+- ✅ Database
+- ✅ Generate
+- ✅ Stats
+- ✅ Sync
+- ✅ Clean
 
-## Próximo objetivo
+## Próxima milestone
 
-- mc icon import
-- mc scan
-
-## Bloqueadores
-
-Nenhum.
+- ⬜ Build
 
 ## Status
 
