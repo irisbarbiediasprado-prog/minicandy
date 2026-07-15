@@ -7,11 +7,13 @@ def generate():
     xml = [
         '<?xml version="1.0" encoding="utf-8"?>',
         "<resources>",
+        "",
     ]
 
     for icon in icons:
-        xml.append(f'    <!-- TODO: ComponentInfo para {icon["name"]} -->')
-        xml.append(f'    <item component="ComponentInfo{{}}" drawable="{icon["drawable"]}" />')
+        component = icon.get("component") or "ComponentInfo{}"
+        xml.append(f'    <!-- {icon["name"]} -->')
+        xml.append(f'    <item component="{component}" drawable="{icon["drawable"]}" />')
         xml.append("")
 
     xml.append("</resources>")

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- TODO: ComponentInfo para whatsapp -->
+
+    <!-- whatsapp -->
     <item component="ComponentInfo{}" drawable="whatsapp" />
 
 </resources>
