@@ -1,23 +1,27 @@
-import shutil
 from pathlib import Path
-from cli.core.console import title, section, check
 
 NAME = "doctor"
 HELP = "Verifica o ambiente"
 
-ROOT = Path(__file__).resolve().parents[2]
+def run(args):
+    print("🍬 MiniCandy Doctor\n")
 
-def run(args=None):
-    title("MiniCandy Doctor")
+    checks = [
+        ("app", Path("app").is_dir()),
+        ("AndroidManifest.xml", Path("app/src/main/AndroidManifest.xml").exists()),
+        ("assets", Path("assets").is_dir()),
+        ("pixelart", Path("assets/pixelart").is_dir())
+    ]
 
-    section("Ferramentas")
-    check("Git", shutil.which("git") is not None)
-    check("Python", shutil.which("python3") is not None)
+    ok = True
 
-    section("\nProjeto")
-    check("app/", (ROOT / "app").is_dir())
-    check("build.gradle.kts", (ROOT / "build.gradle.kts").exists())
-    check("AndroidManifest.xml", (ROOT / "app/src/main/AndroidManifest.xml").exists())
+    for name, result in checks:
+        print(("✔" if result else "✖"), name)
+        ok &= result
 
-    section("\nStatus")
-    print("Environment OK")
+    print()
+
+    if ok:
+        print("Ambiente OK.")
+    else:
+        print("Existem problemas no projeto.")

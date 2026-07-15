@@ -1,24 +1,24 @@
 from pathlib import Path
 import shutil
-
-NAME = "icon"
-HELP = "Gerencia ícones"
+from cli.utils.image import validate_png
 
 def run(args):
-    if not args.name:
-        print("Uso: mc icon import <nome>")
-        return
-
     source = Path.home() / "storage/shared/Download" / f"{args.name}.png"
-    target_dir = Path("assets/pixelart/originals")
-    target_dir.mkdir(parents=True, exist_ok=True)
-    target = target_dir / source.name
 
-    if not source.exists():
-        print(f"❌ Arquivo não encontrado: {source}")
+    ok, message = validate_png(source)
+
+    if not ok:
+        print("❌", message)
         return
 
-    shutil.copy2(source, target)
+    target = Path("assets/pixelart/originals")
+    target.mkdir(parents=True, exist_ok=True)
 
-    print("✅ Ícone importado")
-    print(target)
+    shutil.copy2(source, target / source.name)
+
+    print("🍬 MiniCandy\n")
+    print("✔ PNG")
+    print("✔ 512x512")
+    print("✔ Transparência")
+    print()
+    print("✅ Importado:", source.name)

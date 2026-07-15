@@ -6,7 +6,7 @@ def load():
 
     commands_dir = Path(__file__).resolve().parents[1] / "commands"
 
-    for file in commands_dir.glob("*.py"):
+    for file in sorted(commands_dir.glob("*.py")):
         if file.stem.startswith("_"):
             continue
 
