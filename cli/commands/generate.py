@@ -1,5 +1,6 @@
 from cli.generators import drawable
 from cli.generators import appfilter
+from cli.generators import theme_resources
 
 NAME = "generate"
 HELP = "Gera arquivos do icon pack"
@@ -13,3 +14,6 @@ def register(subparsers):
 
     p = actions.add_parser("appfilter", help="Gera appfilter.xml")
     p.set_defaults(func=lambda args: appfilter.generate())
+
+    p = actions.add_parser("theme", help="Gera theme_resources.xml")
+    p.set_defaults(func=lambda args: theme_resources.generate())

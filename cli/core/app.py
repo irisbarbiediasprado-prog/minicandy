@@ -1,39 +1,17 @@
 import argparse
+import json
+from pathlib import Path
 
 from cli.metadata import VERSION
-
-from cli.commands import (
-    clean,
-    doctor,
-    generate,
-    icon,
-    scan,
-    stats,
-    sync,
-    version,
-)
-
-COMMANDS = {
-    doctor.NAME: doctor,
-    version.NAME: version,
-    icon.NAME: icon,
-    generate.NAME: generate,
-    scan.NAME: scan,
-    stats.NAME: stats,
-    sync.NAME: sync,
-    clean.NAME: clean,
-}
+from cli.commands import COMMANDS
 
 def dashboard():
-    from pathlib import Path
-    import json
-
     icons = 0
     db = Path("assets/database/icons.json")
 
     if db.exists():
         try:
-            icons = len(json.loads(db.read_text())["icons"])
+            icons = len(json.loads(db.read_text(encoding="utf-8"))["icons"])
         except Exception:
             pass
 
@@ -56,7 +34,7 @@ def main():
     parser.add_argument(
         "--version",
         action="version",
-        version=f"MiniCandy {VERSION}",
+        version=f"MiniCandy {VERSION}"
     )
 
     sub = parser.add_subparsers(dest="command")
