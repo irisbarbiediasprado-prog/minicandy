@@ -8,6 +8,8 @@ from cli.commands import generate
 from cli.commands import icon
 from cli.commands import scan
 from cli.commands import stats
+from cli.commands import sync
+from cli.commands import clean
 
 MODULES = (
     doctor,
@@ -16,6 +18,8 @@ MODULES = (
     icon,
     scan,
     stats,
+    sync,
+    clean,
 )
 
 def main():
