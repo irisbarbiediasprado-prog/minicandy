@@ -1,34 +1,12 @@
-from pathlib import Path
-import shutil
+from cli.android.importer import run as importer
 
-NAME = "icon"
-HELP = "Gerencia ícones"
+NAME="icon"
+HELP="Gerencia ícones"
 
-def import_icon(args):
-    source = Path.home() / "storage/shared/Download" / f"{args.name}.png"
-    target = Path("assets/pixelart/originals") / f"{args.name}.png"
+def register(sub):
+    p=sub.add_parser(NAME,help=HELP)
+    s=p.add_subparsers(dest="action",required=True)
 
-    if not source.exists():
-        print(f"❌ Arquivo não encontrado: {source}")
-        return
-
-    target.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(source, target)
-
-    print(f"✅ {target} importado.")
-
-def register(subparsers):
-    parser = subparsers.add_parser(NAME, help=HELP)
-
-    actions = parser.add_subparsers(
-        dest="icon_command",
-        required=True,
-    )
-
-    imp = actions.add_parser(
-        "import",
-        help="Importa um PNG da pasta Download",
-    )
-
-    imp.add_argument("name")
-    imp.set_defaults(func=import_icon)
+    i=s.add_parser("import",help="Importa metadados")
+    i.add_argument("name")
+    i.set_defaults(func=lambda a: importer(a.name))

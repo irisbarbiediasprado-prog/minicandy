@@ -4,9 +4,9 @@
       "name": "whatsapp",
       "drawable": "whatsapp",
       "file": "assets/pixelart/originals/whatsapp.png",
-      "package": "",
-      "activity": "",
-      "component": ""
+      "package": "com.whatsapp",
+      "activity": "com.whatsapp.Main",
+      "component": "ComponentInfo{com.whatsapp/com.whatsapp.Main}"
     }
   ]
 }
