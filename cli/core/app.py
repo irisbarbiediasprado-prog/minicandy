@@ -1,8 +1,10 @@
 import argparse
 from cli.core.registry import load
+from cli.metadata import VERSION
 
 def main():
     parser = argparse.ArgumentParser(prog="mc")
+    parser.add_argument("--version", action="version", version=f"MiniCandy {VERSION}")
 
     sub = parser.add_subparsers(dest="command")
 
