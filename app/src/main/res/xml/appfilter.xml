@@ -2,6 +2,6 @@
 <resources>
 
     <!-- whatsapp -->
-    <item component="ComponentInfo{}" drawable="whatsapp" />
+    <item component="ComponentInfo{com.whatsapp/com.whatsapp.Main}" drawable="whatsapp" />
 
 </resources>
