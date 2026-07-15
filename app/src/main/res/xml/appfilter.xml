@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- whatsapp -->
-    <item component="ComponentInfo{com.whatsapp/com.whatsapp.Main}" drawable="whatsapp" />
-
+    <item component="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" drawable="whatsapp"/>
 </resources>
