@@ -6,12 +6,14 @@ from cli.commands import doctor
 from cli.commands import version
 from cli.commands import generate
 from cli.commands import icon
+from cli.commands import scan
 
 MODULES = (
     doctor,
     version,
     generate,
     icon,
+    scan,
 )
 
 def main():

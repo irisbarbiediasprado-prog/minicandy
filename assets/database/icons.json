@@ -1,0 +1,9 @@
+{
+  "icons": [
+    {
+      "name": "whatsapp",
+      "drawable": "whatsapp",
+      "file": "assets/pixelart/originals/whatsapp.png"
+    }
+  ]
+}
