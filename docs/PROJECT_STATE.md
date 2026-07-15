@@ -1,18 +1,27 @@
 # Estado do Projeto
 
 ## Milestone atual
-CLI em Python
 
-## Último marco
-- Bootstrap funcionando
-- SSH configurado
-- Ambiente reproduzível
+CLI Python funcional
+
+## Funcionalidades implementadas
+
+- ✅ bootstrap.sh
+- ✅ Ambiente reproduzível no Termux
+- ✅ Git via SSH
+- ✅ mc doctor
+- ✅ mc generate drawable
+- ✅ mc generate appfilter
 
 ## Próximo objetivo
-- Implementar mc doctor
+
+- mc icon import
+- mc scan
 
 ## Bloqueadores
-Nenhum
+
+Nenhum.
 
 ## Status
+
 🟢 Desenvolvimento ativo
