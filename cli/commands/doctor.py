@@ -1,22 +1,20 @@
 import shutil
 from pathlib import Path
+from cli.core.console import title, section, check
 
 ROOT = Path(__file__).resolve().parents[2]
 
-def check(label, ok):
-    print(("✔" if ok else "✘"), label)
-
 def run():
-    print("🍬 MiniCandy Doctor\n")
+    title("MiniCandy Doctor")
 
-    print("Ferramentas")
+    section("Ferramentas")
     check("Git", shutil.which("git") is not None)
     check("Python", shutil.which("python3") is not None)
 
-    print("\nProjeto")
+    section("\nProjeto")
     check("app/", (ROOT / "app").is_dir())
     check("build.gradle.kts", (ROOT / "build.gradle.kts").exists())
     check("AndroidManifest.xml", (ROOT / "app/src/main/AndroidManifest.xml").exists())
 
-    print("\nStatus")
+    section("\nStatus")
     print("Environment OK")
