@@ -2,9 +2,12 @@ import shutil
 from pathlib import Path
 from cli.core.console import title, section, check
 
+NAME = "doctor"
+HELP = "Verifica o ambiente"
+
 ROOT = Path(__file__).resolve().parents[2]
 
-def run():
+def run(args=None):
     title("MiniCandy Doctor")
 
     section("Ferramentas")
