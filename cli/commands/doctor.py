@@ -1,29 +1,43 @@
-from cli.core.console import title, step, success, blank
-
-from pathlib import Path
+from cli.core.console import title, success, error, blank
+from cli.doctor.checks import run as run_checks
 
 NAME = "doctor"
-HELP = "Verifica o ambiente"
+HELP = "Verifica a saúde do projeto"
+
+def line(label, ok, detail=""):
+    icon = "✔" if ok else "✖"
+    msg = f"{icon} {label}"
+    if detail:
+        msg += f" ({detail})"
+    print(msg)
 
 def run(args):
-    title("MiniCandy Doctor\n")
+    title("MiniCandy Doctor")
 
-    checks = [
-        ("app", Path("app").is_dir()),
-        ("AndroidManifest.xml", Path("app/src/main/AndroidManifest.xml").exists()),
-        ("assets", Path("assets").is_dir()),
-        ("pixelart", Path("assets/pixelart").is_dir())
+    groups = [
+        ("Projeto", 4),
+        ("Android", 3),
+        ("Banco", 1),
+        ("Assets", 3),
+        ("Ferramentas", 2),
+        ("Git", 1),
     ]
 
-    ok = True
+    data = run_checks()
+    i = 0
+    failed = False
 
-    for name, result in checks:
-        print(("✔" if result else "✖"), name)
-        ok &= result
+    for name, size in groups:
+        print(name)
+        print("──────────────")
+        for _ in range(size):
+            label, ok, detail = data[i]
+            line(label, ok, detail)
+            failed |= not ok
+            i += 1
+        blank()
 
-    blank()
-
-    if ok:
-        print("Ambiente OK.")
+    if failed:
+        error("Projeto possui pendências.")
     else:
-        print("Existem problemas no projeto.")
+        success("Projeto pronto para desenvolvimento.")
