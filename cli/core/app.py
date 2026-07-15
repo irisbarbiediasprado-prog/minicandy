@@ -7,34 +7,37 @@ from cli.commands import version
 from cli.commands import generate
 from cli.commands import icon
 
-COMMANDS = {
-    doctor.NAME: doctor,
-    version.NAME: version,
-    generate.NAME: generate,
-    icon.NAME: icon,
-}
+MODULES = (
+    doctor,
+    version,
+    generate,
+    icon,
+)
 
 def main():
     parser = argparse.ArgumentParser(prog="mc")
+
     parser.add_argument(
         "--version",
         action="version",
-        version=f"MiniCandy {VERSION}"
+        version=f"MiniCandy {VERSION}",
     )
 
-    sub = parser.add_subparsers(dest="command")
+    subparsers = parser.add_subparsers(
+        dest="command",
+        required=True,
+    )
 
-    for module in COMMANDS.values():
-        p = sub.add_parser(module.NAME, help=module.HELP)
-        p.set_defaults(func=module.run)
+    for module in MODULES:
+        if hasattr(module, "register"):
+            module.register(subparsers)
+        else:
+            p = subparsers.add_parser(module.NAME, help=module.HELP)
+            p.set_defaults(func=module.run)
 
-    args, unknown = parser.parse_known_args()
-    args._unknown = unknown
+    args = parser.parse_args()
 
-    if hasattr(args, "func"):
-        args.func(args)
-    else:
-        parser.print_help()
+    args.func(args)
 
 if __name__ == "__main__":
     main()
