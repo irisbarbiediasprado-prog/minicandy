@@ -29,8 +29,23 @@
           "line": 0
         }
       }
+    },
+    {
+      "file": "/storage/emulated/0/CodeOnTheGoProjects/minicandy/.gitignore",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
     }
   ],
   "projectPath": "/storage/emulated/0/CodeOnTheGoProjects/minicandy",
-  "selectedFile": "/storage/emulated/0/CodeOnTheGoProjects/minicandy/gradle.properties"
+  "selectedFile": "/storage/emulated/0/CodeOnTheGoProjects/minicandy/.gitignore"
 }

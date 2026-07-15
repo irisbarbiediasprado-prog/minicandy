@@ -1,0 +1,35 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+cd "$PROJECT_ROOT"
+
+case "$1" in
+    doctor)
+        echo "🍬 MiniCandy CLI"
+        echo
+
+        [ -d app ] && echo "✔ app/" || { echo "✖ app/"; exit 1; }
+
+        [ -f app/src/main/AndroidManifest.xml ] \
+            && echo "✔ AndroidManifest.xml" \
+            || { echo "✖ AndroidManifest.xml"; exit 1; }
+
+        [ -d app/src/main/res ] \
+            && echo "✔ res/" \
+            || { echo "✖ res/"; exit 1; }
+
+        echo
+        echo "Tudo pronto para continuar."
+        ;;
+
+    *)
+        echo "MiniCandy CLI"
+        echo
+        echo "Uso:"
+        echo "  mc doctor"
+        ;;
+esac
