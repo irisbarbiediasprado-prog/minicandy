@@ -1,8 +1,26 @@
 import re
 import subprocess
+from pathlib import Path
+from PIL import Image
 from cli.database.icons import load, save
 
 def run(query):
+    src=Path(query)
+    if not src.exists():
+        d=Path("/storage/emulated/0/Download")
+        for e in ("png","jpg","jpeg","webp","avif"):
+            f=d/f"{query}.{e}"
+            if f.exists():
+                src=f
+                break
+        else:
+            print(f"❌ Imagem {query} não encontrada em {d}")
+            return
+    query=src.stem.lower()
+    dst=Path(f"assets/pixelart/originals/{query}.png")
+    dst.parent.mkdir(parents=True,exist_ok=True)
+    Image.open(src).convert("RGBA").save(dst)
+    query=query
     r = subprocess.run(
         ["cmd","package","list","packages"],
         capture_output=True,
@@ -40,19 +58,25 @@ def run(query):
         return
 
     r = subprocess.run(
-        ["aapt2","dump","badging",base],
+        [
+            "cmd","package","resolve-activity",
+            "--user","0",
+            "-a","android.intent.action.MAIN",
+            "-c","android.intent.category.LAUNCHER",
+            pkg,
+        ],
         capture_output=True,
         text=True,
         check=False,
     )
 
-    m = re.search(r"launchable-activity: name='([^']+)'", r.stdout)
+    m = re.search(r"name=([^\n]+)", r.stdout)
 
     if not m:
         print("❌ Launcher Activity não encontrada.")
         return
 
-    activity = m.group(1)
+    activity = m.group(1).strip()
     component = f"ComponentInfo{{{pkg}/{activity}}}"
 
     db = load()
@@ -70,4 +94,6 @@ def run(query):
             print(f"Component... {component}")
             return
 
-    print("❌ Ícone não encontrado no banco.")
+    db["icons"].append({"name": query, "drawable": query, "file": f"assets/pixelart/originals/{query}.png", "package": pkg, "activity": activity, "component": component})
+    save(db)
+    print("✅ Novo ícone importado")

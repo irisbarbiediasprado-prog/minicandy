@@ -1,6 +1,14 @@
 {
   "icons": [
     {
+      "name": "chrome",
+      "drawable": "chrome",
+      "file": "assets/pixelart/originals/chrome.png",
+      "package": "com.android.chrome",
+      "activity": "com.google.android.apps.chrome.Main",
+      "component": "ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}"
+    },
+    {
       "name": "whatsapp",
       "drawable": "whatsapp",
       "file": "assets/pixelart/originals/whatsapp.png",

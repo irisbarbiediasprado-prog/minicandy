@@ -17,15 +17,18 @@ def save(data):
     )
 
 def rebuild():
-    icons = []
+    old={i["name"]:i for i in load()["icons"]}
+    icons=[]
 
     if ICONS_DIR.exists():
         for png in sorted(ICONS_DIR.glob("*.png")):
-            icons.append({
+            icon=old.get(png.stem,{})
+            icon.update({
                 "name": png.stem,
                 "drawable": png.stem,
                 "file": str(png).replace("\\", "/"),
             })
+            icons.append(icon)
 
     save({"icons": icons})
 
