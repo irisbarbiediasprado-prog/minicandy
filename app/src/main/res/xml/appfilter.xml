@@ -4,6 +4,18 @@
     <!-- chrome -->
     <item component="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" drawable="chrome" />
 
+    <!-- google -->
+    <item component="ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.googlequicksearchbox.SearchActivity}" drawable="google" />
+
+    <!-- googlequicksearchbox -->
+    <item component="ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.googlequicksearchbox.SearchActivity}" drawable="googlequicksearchbox" />
+
+    <!-- playstore -->
+    <item component="ComponentInfo{com.android.vending/com.android.vending.AssetBrowserActivity}" drawable="playstore" />
+
+    <!-- twitter -->
+    <item component="ComponentInfo{com.twitter.android/com.x.android.main.MainActivity}" drawable="twitter" />
+
     <!-- whatsapp -->
     <item component="ComponentInfo{com.whatsapp/com.whatsapp.Main}" drawable="whatsapp" />
 

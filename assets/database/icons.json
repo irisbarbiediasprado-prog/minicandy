@@ -9,6 +9,38 @@
       "component": "ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}"
     },
     {
+      "name": "google",
+      "drawable": "google",
+      "file": "assets/pixelart/originals/google.png",
+      "package": "com.google.android.googlequicksearchbox",
+      "activity": "com.google.android.googlequicksearchbox.SearchActivity",
+      "component": "ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.googlequicksearchbox.SearchActivity}"
+    },
+    {
+      "name": "googlequicksearchbox",
+      "drawable": "googlequicksearchbox",
+      "file": "assets/pixelart/originals/googlequicksearchbox.png",
+      "package": "com.google.android.googlequicksearchbox",
+      "activity": "com.google.android.googlequicksearchbox.SearchActivity",
+      "component": "ComponentInfo{com.google.android.googlequicksearchbox/com.google.android.googlequicksearchbox.SearchActivity}"
+    },
+    {
+      "name": "playstore",
+      "drawable": "playstore",
+      "file": "assets/pixelart/originals/playstore.png",
+      "package": "com.android.vending",
+      "activity": "com.android.vending.AssetBrowserActivity",
+      "component": "ComponentInfo{com.android.vending/com.android.vending.AssetBrowserActivity}"
+    },
+    {
+      "name": "twitter",
+      "drawable": "twitter",
+      "file": "assets/pixelart/originals/twitter.png",
+      "package": "com.twitter.android",
+      "activity": "com.x.android.main.MainActivity",
+      "component": "ComponentInfo{com.twitter.android/com.x.android.main.MainActivity}"
+    },
+    {
       "name": "whatsapp",
       "drawable": "whatsapp",
       "file": "assets/pixelart/originals/whatsapp.png",
