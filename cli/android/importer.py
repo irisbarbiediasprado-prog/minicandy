@@ -1,6 +1,7 @@
 import re
 import subprocess
 from pathlib import Path
+import json
 
 from PIL import Image
 
@@ -24,6 +25,10 @@ def run(query):
 
     query = src.stem.lower()
 
+    aliases_file = Path("assets/database/aliases.json")
+    aliases = json.loads(aliases_file.read_text(encoding="utf-8")) if aliases_file.exists() else {}
+    alias = aliases.get(query)
+
     dst = Path(f"assets/pixelart/originals/{query}.png")
     dst.parent.mkdir(parents=True, exist_ok=True)
 
@@ -36,15 +41,17 @@ def run(query):
         check=False,
     )
 
-    packages = [
-        p.removeprefix("package:").strip()
-        for p in result.stdout.splitlines()
-        if query.lower() in p.lower()
-    ]
+    if alias:
+        packages = [alias]
+    else:
+        packages = [
+            p.removeprefix("package:").strip()
+            for p in result.stdout.splitlines()
+            if query.lower() in p.lower()
+        ]
 
     if not packages:
-        print("❌ Aplicativo não encontrado.")
-        return
+        raise RuntimeError("Aplicativo não encontrado.")
 
     if len(packages) > 1:
         print("🔎 Múltiplos aplicativos encontrados:")
@@ -76,8 +83,7 @@ def run(query):
             break
 
     if not base:
-        print("❌ base.apk não encontrada.")
-        return
+        raise RuntimeError("base.apk não encontrada.")
 
     result = subprocess.run(
         [
@@ -100,8 +106,7 @@ def run(query):
     match = re.search(r"name=([^\n]+)", result.stdout)
 
     if not match:
-        print("❌ Launcher Activity não encontrada.")
-        return
+        raise RuntimeError("Launcher Activity não encontrada.")
 
     activity = match.group(1).strip()
     component = f"ComponentInfo{{{pkg}/{activity}}}"
