@@ -1,28 +1,36 @@
 import re
 import subprocess
 from pathlib import Path
+
 from PIL import Image
+
 from cli.database.icons import load, save
 
+
 def run(query):
-    src=Path(query)
+    src = Path(query)
+
     if not src.exists():
-        d=Path("/storage/emulated/0/Download")
-        for e in ("png","jpg","jpeg","webp","avif"):
-            f=d/f"{query}.{e}"
+        d = Path("/storage/emulated/0/Download")
+
+        for ext in ("png", "jpg", "jpeg", "webp", "avif"):
+            f = d / f"{query}.{ext}"
             if f.exists():
-                src=f
+                src = f
                 break
         else:
             print(f"❌ Imagem {query} não encontrada em {d}")
             return
-    query=src.stem.lower()
-    dst=Path(f"assets/pixelart/originals/{query}.png")
-    dst.parent.mkdir(parents=True,exist_ok=True)
+
+    query = src.stem.lower()
+
+    dst = Path(f"assets/pixelart/originals/{query}.png")
+    dst.parent.mkdir(parents=True, exist_ok=True)
+
     Image.open(src).convert("RGBA").save(dst)
-    query=query
-    r = subprocess.run(
-        ["cmd","package","list","packages"],
+
+    result = subprocess.run(
+        ["cmd", "package", "list", "packages"],
         capture_output=True,
         text=True,
         check=False,
@@ -30,7 +38,7 @@ def run(query):
 
     packages = [
         p.removeprefix("package:").strip()
-        for p in r.stdout.splitlines()
+        for p in result.stdout.splitlines()
         if query.lower() in p.lower()
     ]
 
@@ -38,17 +46,31 @@ def run(query):
         print("❌ Aplicativo não encontrado.")
         return
 
-    pkg = packages[0]
+    if len(packages) > 1:
+        print("🔎 Múltiplos aplicativos encontrados:")
+        for i, pkg in enumerate(packages, 1):
+            print(f"{i}) {pkg}")
 
-    base = None
-    r = subprocess.run(
-        ["cmd","package","path",pkg],
+        choice = input(f"Escolha [1-{len(packages)}]: ")
+
+        try:
+            pkg = packages[int(choice) - 1]
+        except Exception:
+            print("❌ Escolha inválida.")
+            return
+    else:
+        pkg = packages[0]
+
+    result = subprocess.run(
+        ["cmd", "package", "path", pkg],
         capture_output=True,
         text=True,
         check=False,
     )
 
-    for line in r.stdout.splitlines():
+    base = None
+
+    for line in result.stdout.splitlines():
         if "base.apk" in line:
             base = line.removeprefix("package:")
             break
@@ -57,12 +79,17 @@ def run(query):
         print("❌ base.apk não encontrada.")
         return
 
-    r = subprocess.run(
+    result = subprocess.run(
         [
-            "cmd","package","resolve-activity",
-            "--user","0",
-            "-a","android.intent.action.MAIN",
-            "-c","android.intent.category.LAUNCHER",
+            "cmd",
+            "package",
+            "resolve-activity",
+            "--user",
+            "0",
+            "-a",
+            "android.intent.action.MAIN",
+            "-c",
+            "android.intent.category.LAUNCHER",
             pkg,
         ],
         capture_output=True,
@@ -70,13 +97,13 @@ def run(query):
         check=False,
     )
 
-    m = re.search(r"name=([^\n]+)", r.stdout)
+    match = re.search(r"name=([^\n]+)", result.stdout)
 
-    if not m:
+    if not match:
         print("❌ Launcher Activity não encontrada.")
         return
 
-    activity = m.group(1).strip()
+    activity = match.group(1).strip()
     component = f"ComponentInfo{{{pkg}/{activity}}}"
 
     db = load()
@@ -94,6 +121,20 @@ def run(query):
             print(f"Component... {component}")
             return
 
-    db["icons"].append({"name": query, "drawable": query, "file": f"assets/pixelart/originals/{query}.png", "package": pkg, "activity": activity, "component": component})
+    db["icons"].append(
+        {
+            "name": query,
+            "drawable": query,
+            "file": f"assets/pixelart/originals/{query}.png",
+            "package": pkg,
+            "activity": activity,
+            "component": component,
+        }
+    )
+
     save(db)
+
     print("✅ Novo ícone importado")
+    print(f"Package..... {pkg}")
+    print(f"Activity.... {activity}")
+    print(f"Component... {component}")
