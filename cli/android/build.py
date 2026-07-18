@@ -3,23 +3,34 @@ import subprocess
 
 from cli.core.console import title, step, success, error
 
+
 def build():
     title("MiniCandy Build")
 
     gradlew = Path("./gradlew")
-
     if not gradlew.exists():
         error("gradlew não encontrado.")
         return False
 
     step("Compilando projeto")
 
-    result = subprocess.run(
+    proc = subprocess.Popen(
         ["./gradlew", "assembleDebug"],
-        text=True
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
     )
 
-    if result.returncode != 0:
+    assert proc.stdout is not None
+
+    for line in proc.stdout:
+        if "No package ID 7f found for resource ID" in line:
+            continue
+        print(line, end="")
+
+    proc.wait()
+
+    if proc.returncode != 0:
         error("Falha no build.")
         return False
 
