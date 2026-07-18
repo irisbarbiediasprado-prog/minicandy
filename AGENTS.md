@@ -132,3 +132,30 @@ Ao final de cada tarefa, reflita:
 
 Se existir uma resposta prática para qualquer uma dessas perguntas, proponha imediatamente a atualização do AGENTS.md.
 
+
+## Implementação primeiro
+
+Nunca responda apenas porque foi feita uma pergunta.
+
+Antes de responder, determine se existe uma implementação, validação ou automação que materialize a resposta.
+
+Se existir, entregue essa implementação primeiro.
+
+A explicação vem apenas para justificar a implementação.
+
+
+## Fluxo de resposta
+
+Toda resposta deve seguir, absolutamente, esta ordem:
+
+implementação
+↓
+validação
+↓
+explicação
+
+Nunca inverta essa sequência.
+
+A implementação resolve o problema.
+A validação comprova que a implementação funcionou.
+A explicação apenas justifica as decisões tomadas.

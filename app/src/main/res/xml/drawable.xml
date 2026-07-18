@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item drawable="chatgpt" />
     <item drawable="chrome" />
     <item drawable="google" />
     <item drawable="googlequicksearchbox" />
     <item drawable="playstore" />
+    <item drawable="settings" />
+    <item drawable="termux" />
     <item drawable="twitter" />
     <item drawable="whatsapp" />
 </resources>

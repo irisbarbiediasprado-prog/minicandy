@@ -1,6 +1,14 @@
 {
   "icons": [
     {
+      "name": "chatgpt",
+      "drawable": "chatgpt",
+      "file": "assets/pixelart/originals/chatgpt.png",
+      "package": "com.openai.chatgpt",
+      "activity": "com.openai.chatgpt.MainActivity",
+      "component": "ComponentInfo{com.openai.chatgpt/com.openai.chatgpt.MainActivity}"
+    },
+    {
       "name": "chrome",
       "drawable": "chrome",
       "file": "assets/pixelart/originals/chrome.png",
@@ -31,6 +39,22 @@
       "package": "com.android.vending",
       "activity": "com.android.vending.AssetBrowserActivity",
       "component": "ComponentInfo{com.android.vending/com.android.vending.AssetBrowserActivity}"
+    },
+    {
+      "name": "settings",
+      "drawable": "settings",
+      "file": "assets/pixelart/originals/settings.png",
+      "package": "com.android.settings",
+      "activity": "com.android.settings.Settings",
+      "component": "ComponentInfo{com.android.settings/com.android.settings.Settings}"
+    },
+    {
+      "name": "termux",
+      "drawable": "termux",
+      "file": "assets/pixelart/originals/termux.png",
+      "package": "com.termux",
+      "activity": "com.termux.app.TermuxActivity",
+      "component": "ComponentInfo{com.termux/com.termux.app.TermuxActivity}"
     },
     {
       "name": "twitter",
