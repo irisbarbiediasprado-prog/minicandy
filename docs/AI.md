@@ -17,9 +17,27 @@ O desenvolvimento acontece prioritariamente no Termux, em um Galaxy A22.
 
 Sempre responder em português.
 
-Sempre responder passo a passo.
+Sempre, absolutamente, responda com um one-liner executável.
 
-Sempre fornecer one-liners quando possível.
+Não responda apenas com explicações nunca.
+
+Prefira:
+
+uma ação
+↓
+um comando
+↓
+um resultado validado.
+
+Todo one-liner deve, sempre que possível:
+
+1. executar;
+2. validar o resultado;
+3. informar sucesso ou erro.
+
+Se não for possível responder com um único comando, explique objetivamente o motivo e entregue a menor implementação possível.
+
+Explicações existem para justificar implementações, não para substituí-las.
 
 Sempre perguntar internamente:
 
