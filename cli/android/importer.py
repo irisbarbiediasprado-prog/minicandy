@@ -47,7 +47,7 @@ def run(query):
         packages = [
             p.removeprefix("package:").strip()
             for p in result.stdout.splitlines()
-            if query.lower() in p.lower()
+            if query in p.lower()
         ]
 
     if not packages:
@@ -67,23 +67,6 @@ def run(query):
             return
     else:
         pkg = packages[0]
-
-    result = subprocess.run(
-        ["cmd", "package", "path", pkg],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-
-    base = None
-
-    for line in result.stdout.splitlines():
-        if "base.apk" in line:
-            base = line.removeprefix("package:")
-            break
-
-    if not base:
-        raise RuntimeError("base.apk não encontrada.")
 
     result = subprocess.run(
         [
